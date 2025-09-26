@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ACEHYPNOTIC — $ACE22</title>
+
+  <!-- Basic styling & fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#120023;
+      --bg2:#2b0057;
+      --accent:#b96cff;
+      --accent-2:#8b4bff;
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.03);
+      --text:#f6f3ff;
+      --muted: rgba(246,243,255,0.7);
+    }
+
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+    body{
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(139,75,255,0.18), transparent),
+                  radial-gradient(900px 500px at 90% 80%, rgba(185,108,255,0.12), transparent),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    /* container */
+    .wrap{
+      max-width:1100px;
+      margin:40px auto;
+      padding:28px;
+      position:relative;
+      z-index:3;
+    }
+
+    header{
+      display:flex;
+      gap:20px;
+      align-items:center;
+    }
+
+    .logo {
+      width:86px;
+      height:86px;
+      border-radius:18px;
+      overflow:hidden;
+      border:2px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6), inset 0 -6px 18px rgba(0,0,0,0.35);
+      flex:0 0 86px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;display:block;}
+
+    h1{
+      font-size:30px;margin:0;
+      letter-spacing:0.6px;
+      text-shadow:0 6px 18px rgba(139,75,255,0.16);
+    }
+    .sub{color:var(--muted);margin-top:6px;font-size:14px;}
+
+    /* card */
+    .card{
+      margin-top:28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+      border-radius:18px;
+      padding:22px;
+      box-shadow: 0 6px 30px rgba(11,2,20,0.5);
+      border:1px solid rgba(255,255,255,0.03);
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:20px;
+      align-items:start;
+    }
+
+    /* left content */
+    .lead { font-size:16px; line-height:1.6; color:var(--muted); }
+    .bio {
+      margin-top:12px;
+      font-weight:600;
+      color:var(--text);
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .bio .tag {
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      padding:6px 10px;
+      border-radius:999px;
+      color:#fff;
+      font-weight:700;
+      font-size:13px;
+      box-shadow:0 6px 18px rgba(139,75,255,0.14);
+    }
+
+    /* actions */
+    .actions{
+      display:flex;
+      gap:12px;
+      margin-top:16px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      letter-spacing:0.3px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 8px 24px rgba(139,75,255,0.06);
+      transition:transform .16s ease, box-shadow .16s ease;
+    }
+    .btn:hover{ transform:translateY(-4px); box-shadow: 0 18px 44px rgba(139,75,255,0.12); }
+
+    .btn.primary{
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;
+      border:none;
+    }
+
+    .info-block{
+      background:var(--glass);
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.03);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* right column card */
+    .panel{
+      padding:16px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.07));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .panel h3{margin:0 0 10px 0;font-size:15px;}
+    .contract{
+      word-break:break-all;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+      padding:12px;border-radius:10px;font-family:monospace;
+      font-size:13px;color:var(--muted);
+      margin-bottom:12px;border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .links{display:flex;gap:10px;flex-wrap:wrap;}
+    .pill { padding:8px 10px;border-radius:10px;background:var(--glass-2);font-weight:700;color:var(--muted);border:1px solid rgba(255,255,255,0.02);text-decoration:none; }
+
+    /* footer */
+    footer{ margin-top:18px; color:var(--muted); font-size:13px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+
+    /* lightning canvas overlay & svg lightning */
+    .sky {
+      position:fixed; left:0; top:0; right:0; bottom:0; pointer-events:none; z-index:1;
+    }
+
+    /* SVG lightning style */
+    .lightning {
+      position:fixed;
+      left:50%;
+      top:-10%;
+      transform:translateX(-50%) scale(.9);
+      width:600px;
+      height:600px;
+      opacity:0;
+      z-index:2;
+      filter: drop-shadow(0 20px 40px rgba(139,75,255,0.12));
+      transition:opacity .2s ease;
+      pointer-events:none;
+    }
+    .strike path{ stroke: rgba(255,255,255,0.98); stroke-width:3.2; stroke-linecap:round; stroke-linejoin:round; fill:none; stroke-dasharray:1000; stroke-dashoffset:1000; filter:drop-shadow(0 1px 12px rgba(185,108,255,0.85)); }
+    .strike.on { opacity:1; }
+    /* stroke animation when class 'flash' toggles */
+    .strike.flash path{
+      animation: bolt-draw .14s linear forwards;
+    }
+    @keyframes bolt-draw {
+      0% { stroke-dashoffset:1000; opacity:0.0; }
+      50% { opacity:1; }
+      100% { stroke-dashoffset:0; opacity:1; }
+    }
+
+    /* subtle pulsating gradient */
+    .glow {
+      position:absolute;
+      left:-120px; top:-160px; width:700px; height:700px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(185,108,255,0.18), transparent 30%);
+      mix-blend-mode:screen; z-index:0; filter:blur(24px);
+    }
+
+    /* mobile */
+    @media (max-width:880px){
+      .card{ grid-template-columns: 1fr; }
+      .logo{width:72px;height:72px}
+      .wrap{ padding:18px; }
+    }
+
+    /* tiny hint text */
+    .muted-sm{ color:var(--muted); font-size:13px; margin-top:8px; display:block; }
+
+    /* small animated floating accents */
+    .spark {
+      position:absolute;
+      width:10px;height:10px;border-radius:50%;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      box-shadow:0 6px 22px rgba(139,75,255,0.16);
+      opacity:0.9;
+      z-index:2;
+      animation: floaty 6s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes floaty {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-18px) scale(1.06); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- animated background elements -->
+  <div class="glow"></div>
+  <div class="sky" aria-hidden="true">
+    <!-- svg lightning (draws on JS trigger) -->
+    <svg class="lightning" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <g class="strike" id="bolt">
+        <!-- stylized lightning bolt path (complex shape) -->
+        <path d="M310 0 L260 140 L320 140 L200 400 L330 210 L260 210 L360 0 Z"></path>
+      </g>
+    </svg>
+    <!-- small decorative sparks -->
+    <div class="spark" style="left:10%; top:22%; animation-delay:0s;"></div>
+    <div class="spark" style="left:78%; top:72%; width:12px; height:12px; animation-delay:1s;"></div>
+    <div class="spark" style="left:48%; top:40%; width:8px; height:8px; animation-delay:2s;"></div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="logo" title="ACEHYPNOTIC logo">
+        <!-- user-provided logo -->
+        <img src="https://i.postimg.cc/yd7m1pBg/IMG-0009.jpg" alt="ACEHYPNOTIC logo">
+      </div>
+      <div>
+        <h1>ACEHYPNOTIC <span style="font-weight:500;color:var(--muted);font-size:14px"> — $ACE22</span></h1>
+        <div class="sub">Solana meme coin • Hypnotic energy • Community-driven</div>
+      </div>
+    </header>
+
+    <section class="card" role="region" aria-label="Main content">
+      <div>
+        <div class="lead">
+          <strong style="color:var(--text)">$ACE22 🚀</strong> — Not just a token, it’s an energy. The ace up your sleeve. ♠️
+        </div>
+
+        <div class="bio">
+          <span class="tag">$ACE22</span>
+          <div style="font-size:14px;color:var(--muted)">Solana meme coin • Authentic creator-backed community • Story-driven utility</div>
+        </div>
+
+        <div class="actions" style="margin-top:18px">
+          <a class="btn primary" href="https://pump.fun/coin/4Q8cSV7b8EteHr59BYCPaTWrqTdPa45vacxGPUA1pump" target="_blank" rel="noopener noreferrer">
+            Buy $ACE22
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity:0.95"><path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+
+          <a class="btn" href="https://t.me/AceHypnotic" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,0.02);">
+            Join Telegram
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 2L3 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+
+          <a class="btn" href="#roadmap" style="background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));">
+            Roadmap / Whitepaper
+          </a>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
+          <div class="info-block" style="min-width:220px;">
+            <div style="font-size:13px;color:var(--muted)">Chain</div>
+            <div style="font-weight:800;color:var(--text);margin-top:6px">Solana</div>
+          </div>
+
+          <div class="info-block" style="min-width:220px;">
+            <div style="font-size:13px;color:var(--muted)">Token</div>
+            <div style="font-weight:800;color:var(--text);margin-top:6px">$ACE22</div>
+          </div>
+        </div>
+
+        <p class="muted-sm">Built around authenticity, creativity, and community. Follow updates, join the chat, and hop into the hype.</p>
+
+        <!-- quick features -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:18px;">
+          <div class="panel">
+            <h3>Utility</h3>
+            <div class="muted-sm">Community access, exclusive content, merch drops, and creator-driven experiences.</div>
+          </div>
+          <div class="panel">
+            <h3>Vision</h3>
+            <div class="muted-sm">Storytelling + streaming + entrepreneurship — building generational value.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside>
+        <div class="panel">
+          <h3>Contract</h3>
+          <div class="contract" id="contractAddr">4Q8cSV7b8EteHr59BYCPaTWrqTdPa45vacxGPUA1pump</div>
+
+          <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+            <a class="pill" href="https://pump.fun/coin/4Q8cSV7b8EteHr59BYCPaTWrqTdPa45vacxGPUA1pump" target="_blank" rel="noopener noreferrer">View on pump.fun</a>
+            <a class="pill" href="https://t.me/AceHypnotic" target="_blank" rel="noopener noreferrer">Telegram</a>
+          </div>
+
+          <h3 style="margin-top:6px">Roadmap</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <!-- Roadmap link: points to the uploaded whitepaper filename (also referenced in the page text below) -->
+            <a class="btn" href="ACE22_Whitepaper 1.pdf" target="_blank" rel="noopener noreferrer" style="padding:10px 12px;font-weight:700;font-size:13px">Download Whitepaper / Roadmap</a>
+            <div class="muted-sm">Phase-based growth: Foundation → Growth → Expansion. See the full roadmap in the whitepaper.</div>
+          </div>
+
+        </div>
+      </aside>
+
+    </section>
+
+    <footer>
+      <div>© <strong>ACEHYPNOTIC</strong> — $ACE22</div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div class="muted-sm">Bio: $ACE22 🚀 | Not just a token, it’s an energy. The ace up your sleeve. ♠️</div>
+      </div>
+    </footer>
+
+    <!-- Roadmap section (anchor) -->
+    <section id="roadmap" style="margin-top:34px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(0,0,0,0.05));border:1px solid rgba(255,255,255,0.03)">
+      <h2 style="margin:0 0 10px 0">Roadmap — Overview</h2>
+      <p style="color:var(--muted);margin:0 0 12px 0">Phases summarized from the project's whitepaper (download available above):</p>
+      <ol style="color:var(--muted);line-height:1.7">
+        <li><strong>Phase 1 — Foundation:</strong> Launch token, build community, initial branding.</li>
+        <li><strong>Phase 2 — Growth:</strong> Content consistency, merch and branding, community events.</li>
+        <li><strong>Phase 3 — Expansion:</strong> Partnerships, entrepreneurship showcases, scale ecosystem.</li>
+      </ol>
+      <p style="color:var(--muted);margin-top:12px">For the full details and founder story, download the whitepaper (roadmap included).</p>
+    </section>
+
+  </div>
+
+  <!-- small script controlling lightning flashes -->
+  <script>
+    (function(){
+      const bolt = document.getElementById('bolt');
+      const lightningSvg = document.querySelector('.lightning');
+
+      // Randomly trigger a flash every ~6-18 seconds with some variance
+      function scheduleFlash() {
+        const delay = 4000 + Math.random()*14000; // 4s to 18s
+        setTimeout(() => {
+          flashBolt();
+          scheduleFlash();
+        }, delay);
+      }
+
+      function flashBolt(){
+        // show SVG bolt draw animation
+        bolt.classList.remove('flash');
+        void bolt.offsetWidth; // force reflow to restart animation
+        bolt.classList.add('flash');
+
+        // briefly show entire lightning (opacity) for dramatic effect
+        lightningSvg.style.opacity = 1.0;
+        // subtle overall page flash by toggling background/pulse via overlay
+        document.body.style.transition = 'filter 0.12s ease';
+        document.body.style.filter = 'brightness(1.12)';
+
+        setTimeout(()=>{
+          lightningSvg.style.opacity = 0;
+          document.body.style.filter = '';
+        }, 360);
+
+      }
+
+      // start
+      scheduleFlash();
+
+      // slight interactive: click the logo to trigger a flash (fun)
+      const logo = document.querySelector('.logo');
+      logo && logo.addEventListener('click', (e)=>{
+        flashBolt();
+      });
+
+      // accessibility: expose contract text copy on click
+      const contractEl = document.getElementById('contractAddr');
+      contractEl && contractEl.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(contractEl.textContent.trim());
+          contractEl.style.background = 'linear-gradient(90deg, rgba(139,75,255,0.12), rgba(185,108,255,0.06))';
+          contractEl.style.color = '#fff';
+          setTimeout(()=>{ contractEl.style.background=''; contractEl.style.color=''; },900);
+        } catch(e){}
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
